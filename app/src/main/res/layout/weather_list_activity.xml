@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="weatherRow"
+            type="mdtaieb.fr.myweather.Views.ViewModels.WeatherViewModel" />
+
+        <variable
+            name="weatherList"
+            type="mdtaieb.fr.myweather.Views.ViewHelpers.RefreshWeather" />
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/rootView"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:setOnRefreshListener="@{weatherList::reloadWeather}"
+        tools:context="mdtaieb.fr.myweather.Views.WeatherListActivity">
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/your_scroll_view_id">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/city_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:text="@{weatherRow.city}" />
+
+                <TextView
+                    android:id="@+id/dateTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:text="@{weatherRow.date}"/>
+
+                <ImageView
+                    android:id="@+id/weatherStatusImg"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/temperatureTxt"
+                    android:textColor="@color/colorWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{weatherRow.temperature}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="24dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_drop" />
+
+                            <TextView
+                                android:id="@+id/weatherSummaryTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorWhite"
+                                android:text="@{weatherRow.weatherSummary}"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="24dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_flag" />
+
+                            <TextView
+                                android:id="@+id/wind_speed_text_view"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:textColor="@color/colorWhite"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="20sp"
+                                android:text="@{weatherRow.windAndPressure}"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/weatherRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>

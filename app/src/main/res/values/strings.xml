@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Weather</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+    </string>
+    <string name="loading_weather_error">Weather loading error</string>
+</resources>
