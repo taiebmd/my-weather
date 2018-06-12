@@ -1,6 +1,10 @@
 # My Weather
 MyWeather is an android application based on OpenWeather API and coded in Kotlin.
 
+## Screenshot
+<img src="./screenshot/screenshot.png" width="420"/>
+
+
 ## Technologies used
 - [OpenWeatherMap API](https://openweathermap.org/)
 - [Kotlin and Android](https://developer.android.com/kotlin/)
